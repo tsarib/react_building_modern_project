@@ -3,11 +3,17 @@ import './App.css'
 import TodoList from './TodoList'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [completedTodos, setCompletedTodos] = useState([
+    {text: 'Take out the garbage', isCompleted: true},
+    {text: 'Do the laundry', isCompleted: true}
+  ])
+  const [incompletedTodos, setIncompletedTodos] = useState([
+    {text: 'Make Dinner', isCompleted: false}
+  ])
 
   return (
     <>
-      <TodoList completedTodos={[]} incompletedTodos={[]} />
+      <TodoList completedTodos={completedTodos} incompletedTodos={incompletedTodos} />
     </>
   )
 }
