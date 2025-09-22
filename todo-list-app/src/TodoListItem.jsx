@@ -12,8 +12,8 @@ export default function TodoListItem({ todo }) {
             {todo.isCompleted && <p>Completed!</p>}
             {/* Show button to delete or mark as completed */}
             {todo.isCompleted
-                ? <button onClick={() => dispatch(deleteTodo())}>Delete Item</button> // if completed, show delete button
-                : <button onClick={() => dispatch(markTodoAsCompleted())}>Mark as Completed</button>} 
+                ? <button onClick={() => dispatch(deleteTodo(todo.text))}>Delete Item</button> // if completed, show delete button
+                : <button onClick={() => dispatch(markTodoAsCompleted(todo.text))}>Mark as Completed</button>} 
         </div>
     );
 }

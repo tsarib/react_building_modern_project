@@ -18,13 +18,13 @@ export const todoSlice = createSlice({
                 isCompleted: false, // New todos are not completed by default
             }]
         },
-        markTodoAsCompleted: state => {
-            const text = 'New Todo'; // Example text to identify the todo
+        markTodoAsCompleted: (state, action) => {
+            const text = action.payload; // Get the text from the action payload
             const todo = state.value.find(t => t.text === text); // Find the todo by text
             todo.isCompleted = true; // Mark the found todo as completed
         },
-        deleteTodo: state => {
-            const text = 'New Todo'; // Example text to identify the todo
+        deleteTodo: (state, action) => {
+            const text = action.payload; // Get the text from the action payload
             state.value = state.value.filter(t => t.text !== text); // Remove the todo with the specified text
         },
     }
