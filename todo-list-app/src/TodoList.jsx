@@ -1,7 +1,10 @@
 import NewTodoForm from "./NewTodoForm"
 import TodoListItem from "./TodoListItem"
+import { useSelector } from "react-redux"
 
-export default function TodoList({ completedTodos, incompletedTodos, onCompletedClicked, onDeleteClicked, onCreateClicked }) {
+export default function TodoList({ onCompletedClicked, onDeleteClicked, onCreateClicked }) {
+    const todos = useSelector(state => state.todos.value); // Access the todos from the Redux store
+
     return (
         <div>
             {/* Show the new todo form */}
@@ -10,12 +13,12 @@ export default function TodoList({ completedTodos, incompletedTodos, onCompleted
             {/* Show the completed todos */}
             <h2>Completed:</h2>
             {/* Map over completedTodos and render a TodoListItem for each */}
-            {completedTodos.map((todo, index) => (
+            {todos.map((todo, index) => (
                 <TodoListItem key={index} todo={todo} onDeleteClicked={onDeleteClicked} />
             ))}
             {/* Show the incompleted todos */}
             <h2>Incompleted:</h2>
-            {incompletedTodos.map((todo, index) => (
+            {todos.map((todo, index) => (
                 <TodoListItem key={index} todo={todo} onCompletedClicked={onCompletedClicked} />
             ))}
         </div>

@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const todoSlice = createSlice({
+export const todoSlice = createSlice({
     name: 'todos',
     initialState: {
-        value: [],
+        value: [{
+            text: 'Take out the garbage', isCompleted: true // Example todo item
+        }],
     },
     // Define the reducers and actions
     reducers: {
