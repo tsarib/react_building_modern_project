@@ -11,7 +11,7 @@ function App() {
   // function to add a new todo item
   return (
     <>
-      <TodoList onCreateClicked={createTodo} />
+      <TodoList />
     </>
   )
 }

@@ -2,14 +2,14 @@ import NewTodoForm from "./NewTodoForm"
 import TodoListItem from "./TodoListItem"
 import { useSelector } from "react-redux"
 
-export default function TodoList({ onCreateClicked }) {
+export default function TodoList() {
     const todos = useSelector(state => state.todos.value); // Access the todos from the Redux store
 
     return (
         <div>
             {/* Show the new todo form */}
             <h1>Todo List</h1>
-            <NewTodoForm onCreateClicked={onCreateClicked} />
+            <NewTodoForm />
             {/* Show the completed todos */}
             <h2>Completed:</h2>
             {/* Map over completedTodos and render a TodoListItem for each */}

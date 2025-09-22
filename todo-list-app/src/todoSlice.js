@@ -12,11 +12,13 @@ export const todoSlice = createSlice({
     },
     // Define the reducers and actions
     reducers: {
-        createTodo: state => {
+        createTodo: (state, action) => {
             state.value = [...state.value, {
-                text: 'New Todo', // Example text for the new todo
+                text: action.payload, // Use the text from the action payload
                 isCompleted: false, // New todos are not completed by default
             }]
+            // const text = action.payload; // Get the text from the action payload
+            // state.value.push({ text, isCompleted: false }); // Add the new todo to the list
         },
         markTodoAsCompleted: (state, action) => {
             const text = action.payload; // Get the text from the action payload
