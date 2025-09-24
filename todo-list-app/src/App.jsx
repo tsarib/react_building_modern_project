@@ -1,12 +1,17 @@
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { loadTodos } from './thunks'
 import './App.css'
 import TodoList from './TodoList'
 
 function App() {
+  const dispatch = useDispatch(); // Get the dispatch function from Redux
 
-  // function to create a new todo item
-  function createTodo(text) {
-    setIncompletedTodos([...incompletedTodos, { text, isCompleted: false }]);
-  }
+  useEffect(() => {
+    dispatch(loadTodos());
+  }, []); // Load todos when the component mounts
+
+
 
   // function to add a new todo item
   return (
