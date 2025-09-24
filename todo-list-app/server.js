@@ -3,7 +3,11 @@ import express from 'express';
 const app = express();
 const port = 3000;
 
-let todos = [];
+let todos = [{
+  id: '1',
+  text: 'Sample Todo',
+  isCompleted: false,
+}];
 
 app.use(express.json());
 
