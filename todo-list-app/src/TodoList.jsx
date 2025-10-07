@@ -3,6 +3,7 @@ import TodoListItem from "./TodoListItem"
 import { useSelector } from "react-redux"
 
 export default function TodoList() {
+    const todosAreLoading = useSelector(state => !state.loading.value.completed); // Access the loading state from the Redux store
     const todos = useSelector(state => state.todos.value); // Access the todos from the Redux store
 
     return (
@@ -10,17 +11,23 @@ export default function TodoList() {
             {/* Show the new todo form */}
             <h1>Todo List</h1>
             <NewTodoForm />
-            {/* Show the completed todos */}
-            <h2>Completed:</h2>
-            {/* Map over completedTodos and render a TodoListItem for each */}
-            {todos.map((todo, index) => (
-                <TodoListItem key={index} todo={todo} />
-            ))}
-            {/* Show the incompleted todos */}
-            <h2>Incompleted:</h2>
-            {todos.map((todo, index) => (
-                <TodoListItem key={index} todo={todo} />
-            ))}
+            {todosAreLoading
+                ? <p>Loading...</p>
+                : (
+                    <>
+                    {/* Show the completed todos */}
+                        <h2>Completed:</h2>
+                    {/* Map over completedTodos and render a TodoListItem for each */}
+                        {todos.map((todo, index) => (
+                            <TodoListItem key={index} todo={todo} />
+                        ))}
+                    {/* Show the incompleted todos */}
+                        <h2>Incompleted:</h2>
+                        {todos.map((todo, index) => (
+                            <TodoListItem key={index} todo={todo} />
+                        ))}
+                    </>
+                )}
         </div>
     )
 }

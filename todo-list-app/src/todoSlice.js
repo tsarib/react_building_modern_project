@@ -1,14 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { loadingFinished } from "./loadingSlice";
 
 export const todoSlice = createSlice({
     name: 'todos',
     initialState: {
-        value: [{
-            text: 'Take out the garbage', isCompleted: true // Example todo item
-        }
-        , {
-            text: 'New Todo', isCompleted: false // Example todo item
-        }],
+        value: [],
     },
     // Define the reducers and actions
     reducers: {
@@ -29,6 +25,14 @@ export const todoSlice = createSlice({
             const text = action.payload; // Get the text from the action payload
             state.value = state.value.filter(t => t.text !== text); // Remove the todo with the specified text
         },
+    },
+
+    extraReducers: (builder) => {
+        // Add any additional reducers here if needed
+        builder.addCase(loadingFinished, (state, action) => {
+            state.value = action.payload; // Update the todos when loading is finished
+            
+        })
     }
 
 });
